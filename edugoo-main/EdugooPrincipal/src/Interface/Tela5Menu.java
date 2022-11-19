@@ -2,12 +2,13 @@
 package Interface;
 
 import Objetos.ObjUsuario;
+import javax.swing.JOptionPane;
 
-public class Tela5Feed extends javax.swing.JFrame {
+public class Tela5Menu extends javax.swing.JFrame {
 
     ObjUsuario usuario = new ObjUsuario();
     
-    public Tela5Feed() {
+    public Tela5Menu() {
         initComponents();
     }
 
@@ -19,6 +20,9 @@ public class Tela5Feed extends javax.swing.JFrame {
         btnMeuPerfil = new javax.swing.JButton();
         btnBuscarVagas = new javax.swing.JButton();
         btnContato = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
@@ -36,31 +40,63 @@ public class Tela5Feed extends javax.swing.JFrame {
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnMeuPerfil.setText("Meu Perfil");
+        btnMeuPerfil.setBackground(new java.awt.Color(22, 53, 88));
+        btnMeuPerfil.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        btnMeuPerfil.setForeground(new java.awt.Color(255, 255, 255));
+        btnMeuPerfil.setText("Perfil");
         btnMeuPerfil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMeuPerfilActionPerformed(evt);
             }
         });
-        getContentPane().add(btnMeuPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
+        getContentPane().add(btnMeuPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 110, -1));
 
-        btnBuscarVagas.setText("Buscar Vagas");
+        btnBuscarVagas.setBackground(new java.awt.Color(22, 53, 88));
+        btnBuscarVagas.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        btnBuscarVagas.setForeground(new java.awt.Color(255, 255, 255));
+        btnBuscarVagas.setText("Pesquisa");
         btnBuscarVagas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarVagasActionPerformed(evt);
             }
         });
-        getContentPane().add(btnBuscarVagas, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, -1, -1));
+        getContentPane().add(btnBuscarVagas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 110, -1));
 
+        btnContato.setBackground(new java.awt.Color(22, 53, 88));
+        btnContato.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        btnContato.setForeground(new java.awt.Color(255, 255, 255));
         btnContato.setText("Contato");
         btnContato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnContatoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnContato, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, -1, -1));
+        getContentPane().add(btnContato, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 440, 110, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/TELAPRINCIPAL.png"))); // NOI18N
+        jButton1.setBackground(new java.awt.Color(22, 53, 88));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Trabalho");
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 110, -1));
+
+        jButton2.setBackground(new java.awt.Color(22, 53, 88));
+        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Ajuda");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 310, 110, -1));
+
+        jButton3.setBackground(new java.awt.Color(22, 53, 88));
+        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setText("Editar");
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 110, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/TELAMENU1.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 320, 480));
 
         pack();
@@ -85,6 +121,10 @@ public class Tela5Feed extends javax.swing.JFrame {
         telaContato.recebeUsuarioOn(usuario);
     }//GEN-LAST:event_btnContatoActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    JOptionPane.showMessageDialog(null, "Ministério da Mulher, da Família e dos Direitos Humanos - Ligue 180 WhatsApp (61-99656-5008) Atendimento 24h");
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -99,14 +139,18 @@ public class Tela5Feed extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Tela5Feed.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tela5Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Tela5Feed.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tela5Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Tela5Feed.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tela5Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Tela5Feed.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tela5Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -115,7 +159,7 @@ public class Tela5Feed extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Tela5Feed().setVisible(true);
+                new Tela5Menu().setVisible(true);
             }
         });
     }
@@ -124,6 +168,9 @@ public class Tela5Feed extends javax.swing.JFrame {
     private javax.swing.JButton btnBuscarVagas;
     private javax.swing.JButton btnContato;
     private javax.swing.JButton btnMeuPerfil;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables

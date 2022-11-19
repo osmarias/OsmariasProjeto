@@ -30,6 +30,8 @@ public class Tela7InserirVaga extends javax.swing.JFrame {
         campoTxtInfo = new javax.swing.JTextArea();
         btnVoltar = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -37,17 +39,17 @@ public class Tela7InserirVaga extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtTitulo.setText("Título da Vaga");
-        getContentPane().add(txtTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
+        getContentPane().add(txtTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
 
         cbAreaAtua.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Administração, negócios e serviços", "Artes e Design", "Ciências Biológicas e da Terra", "Análise e Desenvolvimento de Sistemas", "Ciências Sociais e Humanas", "Comunicação e Informação", "Engenharia e Produção", "Saúde e Bem-estar" }));
-        getContentPane().add(cbAreaAtua, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 270, 40));
-        getContentPane().add(campoTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 270, 40));
+        getContentPane().add(cbAreaAtua, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 280, 40));
+        getContentPane().add(campoTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 280, 40));
 
         txtAreaAtua.setText("Área de atuação");
-        getContentPane().add(txtAreaAtua, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
+        getContentPane().add(txtAreaAtua, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
 
         txtInfo.setText("Informações");
-        getContentPane().add(txtInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 271, 100, 30));
+        getContentPane().add(txtInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 100, 30));
 
         btnFeed.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/LOGUINHO.png"))); // NOI18N
         btnFeed.addActionListener(new java.awt.event.ActionListener() {
@@ -55,13 +57,13 @@ public class Tela7InserirVaga extends javax.swing.JFrame {
                 btnFeedActionPerformed(evt);
             }
         });
-        getContentPane().add(btnFeed, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, 50, 40));
+        getContentPane().add(btnFeed, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, 50, 40));
 
         campoTxtInfo.setColumns(20);
         campoTxtInfo.setRows(5);
         campoInfo.setViewportView(campoTxtInfo);
 
-        getContentPane().add(campoInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 270, -1));
+        getContentPane().add(campoInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 333, 280, 100));
 
         btnVoltar.setBackground(new java.awt.Color(161, 211, 199));
         btnVoltar.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
@@ -71,7 +73,7 @@ public class Tela7InserirVaga extends javax.swing.JFrame {
                 btnVoltarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 430, 100, -1));
+        getContentPane().add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 440, 100, -1));
 
         btnSalvar.setBackground(new java.awt.Color(161, 211, 199));
         btnSalvar.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
@@ -81,9 +83,15 @@ public class Tela7InserirVaga extends javax.swing.JFrame {
                 btnSalvarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 430, 100, -1));
+        getContentPane().add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 440, 100, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/TELANOVAVAGA.png"))); // NOI18N
+        jLabel2.setText("Tipo");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Vagas de Emprego", "Curso", "Serviços" }));
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 280, 40));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/TELANOVAOPO.png"))); // NOI18N
         jLabel1.setText("jLabel1");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 320, 480));
 
@@ -92,6 +100,8 @@ public class Tela7InserirVaga extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnFeedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFeedActionPerformed
+    Tela5Menu tela = new Tela5Menu();
+        tela.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnFeedActionPerformed
 
@@ -149,7 +159,9 @@ public class Tela7InserirVaga extends javax.swing.JFrame {
     private javax.swing.JTextField campoTitulo;
     private javax.swing.JTextArea campoTxtInfo;
     private javax.swing.JComboBox<String> cbAreaAtua;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel txtAreaAtua;
     private javax.swing.JLabel txtInfo;
     private javax.swing.JLabel txtTitulo;

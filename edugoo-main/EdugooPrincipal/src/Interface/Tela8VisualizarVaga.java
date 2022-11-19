@@ -26,6 +26,9 @@ public class Tela8VisualizarVaga extends javax.swing.JFrame {
         campoInfo = new javax.swing.JScrollPane();
         campoTxtInfo = new javax.swing.JTextArea();
         btnVoltar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        cbTipo = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -37,28 +40,33 @@ public class Tela8VisualizarVaga extends javax.swing.JFrame {
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtTitulo.setText("Título da Vaga");
-        getContentPane().add(txtTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
+        txtTitulo.setText("Título ");
+        getContentPane().add(txtTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
 
         cbAreaAtua.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Administração, negócios e serviços", "Artes e Design", "Ciências Biológicas e da Terra", "Análise e Desenvolvimento de Sistemas", "Ciências Sociais e Humanas", "Comunicação e Informação", "Engenharia e Produção", "Saúde e Bem-estar" }));
         cbAreaAtua.setEnabled(false);
-        getContentPane().add(cbAreaAtua, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 270, 40));
+        cbAreaAtua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbAreaAtuaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cbAreaAtua, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 280, 40));
 
         campoTitulo.setEnabled(false);
-        getContentPane().add(campoTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 270, 40));
+        getContentPane().add(campoTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 280, 40));
 
         txtAreaAtua.setText("Área de atuação");
-        getContentPane().add(txtAreaAtua, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
+        getContentPane().add(txtAreaAtua, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
 
         txtInfo.setText("Informações");
-        getContentPane().add(txtInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 271, 100, 30));
+        getContentPane().add(txtInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 100, 30));
 
         campoTxtInfo.setColumns(20);
         campoTxtInfo.setRows(5);
         campoTxtInfo.setEnabled(false);
         campoInfo.setViewportView(campoTxtInfo);
 
-        getContentPane().add(campoInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 270, -1));
+        getContentPane().add(campoInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 280, 100));
 
         btnVoltar.setBackground(new java.awt.Color(161, 211, 199));
         btnVoltar.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
@@ -68,9 +76,30 @@ public class Tela8VisualizarVaga extends javax.swing.JFrame {
                 btnVoltarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 430, 100, -1));
+        getContentPane().add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 440, 120, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/TELANOVAVAGA.png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/LOGUINHO.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, 50, 40));
+
+        cbTipo.setBackground(new java.awt.Color(242, 242, 242));
+        cbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Vagas de Emprego", "Curso", "Serviços" }));
+        cbTipo.setEnabled(false);
+        cbTipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbTipoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cbTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 280, 40));
+
+        jLabel2.setText("Tipo");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/TELAOPODISP.png"))); // NOI18N
         jLabel1.setText("jLabel1");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 320, 480));
 
@@ -79,6 +108,8 @@ public class Tela8VisualizarVaga extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+      Tela7InserirVaga tela = new Tela7InserirVaga();
+        tela.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
@@ -91,6 +122,20 @@ public class Tela8VisualizarVaga extends javax.swing.JFrame {
         System.out.println(vaga.getVagaUsuarioId());
         
     }//GEN-LAST:event_formWindowActivated
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+     Tela5Menu tela = new Tela5Menu();
+        tela.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void cbAreaAtuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbAreaAtuaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbAreaAtuaActionPerformed
+
+    private void cbTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTipoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbTipoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -134,7 +179,10 @@ public class Tela8VisualizarVaga extends javax.swing.JFrame {
     private javax.swing.JTextField campoTitulo;
     private javax.swing.JTextArea campoTxtInfo;
     private javax.swing.JComboBox<String> cbAreaAtua;
+    private javax.swing.JComboBox<String> cbTipo;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel txtAreaAtua;
     private javax.swing.JLabel txtInfo;
     private javax.swing.JLabel txtTitulo;

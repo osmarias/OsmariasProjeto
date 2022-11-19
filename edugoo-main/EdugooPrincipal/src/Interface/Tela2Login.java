@@ -186,7 +186,7 @@ public class Tela2Login extends javax.swing.JFrame {
                 telaCadPerfil.recebeUsuarioOn(objUsuario);
                 dispose();
             } else {
-                Tela5Feed telaFeed = new Tela5Feed();
+                Tela5Menu telaFeed = new Tela5Menu();
                 telaFeed.setVisible(true);
                 telaFeed.recebeUsuarioOn(objUsuario);
                 dispose();

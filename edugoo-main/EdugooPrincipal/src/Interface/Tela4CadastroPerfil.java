@@ -40,6 +40,7 @@ public class Tela4CadastroPerfil extends javax.swing.JFrame {
         cbStatusMerc = new javax.swing.JComboBox<>();
         cbInteresse2 = new javax.swing.JComboBox<>();
         btnVoltar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -114,6 +115,14 @@ public class Tela4CadastroPerfil extends javax.swing.JFrame {
         });
         getContentPane().add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, -1, -1));
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/voltar.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, 40, 40));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/TELACADASTROPERFIL.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 480));
 
@@ -145,6 +154,12 @@ public class Tela4CadastroPerfil extends javax.swing.JFrame {
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+     Tela3CadastroUsuario tela = new Tela3CadastroUsuario();
+        tela.setVisible(true);
+        dispose(); 
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -195,6 +210,7 @@ public class Tela4CadastroPerfil extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbInteresse2;
     private javax.swing.JComboBox<String> cbStatusMerc;
     private com.toedter.calendar.JDateChooser dataNasc;
+    private javax.swing.JButton jButton1;
     private com.toedter.calendar.JDayChooser jDayChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
@@ -256,7 +272,7 @@ public class Tela4CadastroPerfil extends javax.swing.JFrame {
                 } finally {
                     this.conectar.fechaBanco();
                     JOptionPane.showMessageDialog(null, "Salvo com Sucesso!");
-                    Tela5Feed telaFeed = new Tela5Feed();
+                    Tela5Menu telaFeed = new Tela5Menu();
                     usuarioAtual.setUsuarioPerfilExist(1);
                     atualizarUsuario(usuarioAtual);
                     telaFeed.recebeUsuarioOn(usuarioAtual);

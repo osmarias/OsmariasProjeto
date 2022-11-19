@@ -42,7 +42,7 @@ public class Tela6Vagas extends javax.swing.JFrame {
                 btnFeedActionPerformed(evt);
             }
         });
-        getContentPane().add(btnFeed, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 50, 40));
+        getContentPane().add(btnFeed, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, 50, 40));
 
         btnBuscar.setBackground(new java.awt.Color(161, 211, 199));
         btnBuscar.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
@@ -122,6 +122,8 @@ public class Tela6Vagas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnFeedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFeedActionPerformed
+     Tela5Menu tela = new Tela5Menu();
+        tela.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnFeedActionPerformed
 
