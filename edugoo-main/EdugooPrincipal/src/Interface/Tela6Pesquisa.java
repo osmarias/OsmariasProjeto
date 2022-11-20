@@ -2,18 +2,18 @@ package Interface;
 
 import Conexoes.MySQL;
 import Objetos.ObjUsuario;
-import Objetos.ObjVaga;
+import Objetos.ObjOportunidade;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class Tela6Vagas extends javax.swing.JFrame {
+public class Tela6Pesquisa extends javax.swing.JFrame {
 
     MySQL conectar = new MySQL();
     ObjUsuario usuario = new ObjUsuario();
 
-    public Tela6Vagas() {
+    public Tela6Pesquisa() {
         initComponents();
     }
 
@@ -25,11 +25,11 @@ public class Tela6Vagas extends javax.swing.JFrame {
         btnBuscar = new javax.swing.JButton();
         txtSelectAreaAtua = new javax.swing.JLabel();
         txtEntreContato = new javax.swing.JLabel();
-        txtEntreContatop2 = new javax.swing.JLabel();
         cbAreaAtua = new javax.swing.JComboBox<>();
         btnInsVaga = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbVagas = new javax.swing.JTable();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -60,13 +60,8 @@ public class Tela6Vagas extends javax.swing.JFrame {
 
         txtEntreContato.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         txtEntreContato.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtEntreContato.setText("Entre em contato para garantir ");
+        txtEntreContato.setText("Tipo de Resultado ");
         getContentPane().add(txtEntreContato, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 240, 30));
-
-        txtEntreContatop2.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        txtEntreContatop2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtEntreContatop2.setText("sua participação no processo seletivo");
-        getContentPane().add(txtEntreContatop2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 280, -1));
 
         cbAreaAtua.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administração, negócios e serviços", "Artes e Design", "Ciências Biológicas e da Terra", "Análise e Desenvolvimento de Sistemas", "Ciências Sociais e Humanas", "Comunicação e Informação", "Engenharia e Produção", "Saúde e Bem-estar" }));
         getContentPane().add(cbAreaAtua, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 280, -1));
@@ -114,7 +109,10 @@ public class Tela6Vagas extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 280, 180));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/TELANOVO.png"))); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Vagas de Emprego", "Curso", "Serviços" }));
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 280, 20));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/fundoPesquisa.jpeg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
@@ -122,13 +120,11 @@ public class Tela6Vagas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnFeedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFeedActionPerformed
-     Tela5Menu tela = new Tela5Menu();
-        tela.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnFeedActionPerformed
 
     private void btnInsVagaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsVagaActionPerformed
-        Tela7InserirVaga tela = new Tela7InserirVaga();
+        Tela7InserirOportunidade tela = new Tela7InserirOportunidade();
         tela.setVisible(true);
         tela.recebeUsuarioOn(usuario);
         dispose();
@@ -139,7 +135,7 @@ public class Tela6Vagas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void tbVagasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbVagasMouseClicked
-        Tela8VisualizarVaga telaVizu = new Tela8VisualizarVaga();
+        Tela8VisualizarOportunidade telaVizu = new Tela8VisualizarOportunidade();
         telaVizu.setVisible(true);
         telaVizu.recebeVaga(getVagaSelecionada());
     }//GEN-LAST:event_tbVagasMouseClicked
@@ -161,21 +157,23 @@ public class Tela6Vagas extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Tela6Vagas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tela6Pesquisa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Tela6Vagas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tela6Pesquisa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Tela6Vagas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tela6Pesquisa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Tela6Vagas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tela6Pesquisa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Tela6Vagas().setVisible(true);
+                new Tela6Pesquisa().setVisible(true);
             }
         });
     }
@@ -185,11 +183,11 @@ public class Tela6Vagas extends javax.swing.JFrame {
     private javax.swing.JButton btnFeed;
     private javax.swing.JButton btnInsVaga;
     private javax.swing.JComboBox<String> cbAreaAtua;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tbVagas;
     private javax.swing.JLabel txtEntreContato;
-    private javax.swing.JLabel txtEntreContatop2;
     private javax.swing.JLabel txtSelectAreaAtua;
     // End of variables declaration//GEN-END:variables
 
@@ -197,9 +195,9 @@ public class Tela6Vagas extends javax.swing.JFrame {
         this.usuario = usuAtual;
     }
 
-    private List<ObjVaga> getDados() {
+    private List<ObjOportunidade> getDados() {
 
-        List<ObjVaga> lstVagas = new ArrayList<ObjVaga>();
+        List<ObjOportunidade> lstVagas = new ArrayList<ObjOportunidade>();
 
         try {
             this.conectar.conectaBanco();
@@ -215,7 +213,7 @@ public class Tela6Vagas extends javax.swing.JFrame {
 
             while (this.conectar.getResultSet().next()) {
 
-                ObjVaga vagaAtual = new ObjVaga();
+                ObjOportunidade vagaAtual = new ObjOportunidade();
 
                 vagaAtual.setVagaId(this.conectar.getResultSet().getInt(1));
                 vagaAtual.setVagaTitulo(this.conectar.getResultSet().getString(2));
@@ -239,7 +237,7 @@ public class Tela6Vagas extends javax.swing.JFrame {
         DefaultTableModel modelo = (DefaultTableModel) tbVagas.getModel();
         modelo.setNumRows(0);
         
-        for (ObjVaga vagaAtual : getDados()) {
+        for (ObjOportunidade vagaAtual : getDados()) {
             
             modelo.addRow(new Object[]{
                 vagaAtual.getVagaId(),
@@ -249,9 +247,9 @@ public class Tela6Vagas extends javax.swing.JFrame {
         }
     }
     
-    private ObjVaga getVagaSelecionada(){
+    private ObjOportunidade getVagaSelecionada(){
     
-        ObjVaga vagaSelecionada = new ObjVaga();
+        ObjOportunidade vagaSelecionada = new ObjOportunidade();
         
         int idx = tbVagas.getSelectedRow();
         

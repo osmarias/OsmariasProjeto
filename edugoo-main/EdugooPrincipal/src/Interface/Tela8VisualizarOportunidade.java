@@ -3,14 +3,14 @@ package Interface;
 
 import Conexoes.MySQL;
 import Objetos.ObjUsuario;
-import Objetos.ObjVaga;
+import Objetos.ObjOportunidade;
 import javax.swing.JOptionPane;
 
-public class Tela8VisualizarVaga extends javax.swing.JFrame {
+public class Tela8VisualizarOportunidade extends javax.swing.JFrame {
 
-    ObjVaga vaga = new ObjVaga();
+    ObjOportunidade vaga = new ObjOportunidade();
     
-    public Tela8VisualizarVaga() {
+    public Tela8VisualizarOportunidade() {
         initComponents();
     }
 
@@ -108,7 +108,7 @@ public class Tela8VisualizarVaga extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-      Tela7InserirVaga tela = new Tela7InserirVaga();
+        Tela7InserirOportunidade tela = new Tela7InserirOportunidade();
         tela.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
@@ -124,8 +124,6 @@ public class Tela8VisualizarVaga extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowActivated
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-     Tela5Menu tela = new Tela5Menu();
-        tela.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -154,21 +152,23 @@ public class Tela8VisualizarVaga extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Tela8VisualizarVaga.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tela8VisualizarOportunidade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Tela8VisualizarVaga.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tela8VisualizarOportunidade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Tela8VisualizarVaga.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tela8VisualizarOportunidade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Tela8VisualizarVaga.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tela8VisualizarOportunidade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Tela8VisualizarVaga().setVisible(true);
+                new Tela8VisualizarOportunidade().setVisible(true);
             }
         });
     }
@@ -188,11 +188,11 @@ public class Tela8VisualizarVaga extends javax.swing.JFrame {
     private javax.swing.JLabel txtTitulo;
     // End of variables declaration//GEN-END:variables
 
-    public void recebeVaga(ObjVaga vagaAtual) {
+    public void recebeVaga(ObjOportunidade vagaAtual) {
         this.vaga = vagaAtual;
     }
     
-    private void vizualizaVaga(ObjVaga vagaVizu){
+    private void vizualizaVaga(ObjOportunidade vagaVizu){
         campoTitulo.setText(vagaVizu.getVagaTitulo());
         cbAreaAtua.getModel().setSelectedItem(vagaVizu.getVagaAreaAtuacao());
         campoTxtInfo.setText(vagaVizu.getVagaInfo());

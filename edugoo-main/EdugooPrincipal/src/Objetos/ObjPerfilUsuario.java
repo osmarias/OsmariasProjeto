@@ -74,5 +74,5 @@ public class ObjPerfilUsuario {
     public void setPerfilUsuarioId(int perfilUsuarioId) {
         this.perfilUsuarioId = perfilUsuarioId;
     }
-
+    
 }
