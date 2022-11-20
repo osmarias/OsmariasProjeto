@@ -120,6 +120,7 @@ public class Tela5Menu extends javax.swing.JFrame {
 
     private void btnBuscarOportunidadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarOportunidadesActionPerformed
         Tela6Pesquisa telaPesquisa = new Tela6Pesquisa();
+        telaPesquisa.recebeUsuarioOn(usuario);
         telaPesquisa.setVisible(true);
     }//GEN-LAST:event_btnBuscarOportunidadesActionPerformed
 

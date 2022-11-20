@@ -28,12 +28,17 @@ public class Tela6Pesquisa extends javax.swing.JFrame {
         cbAreaAtua = new javax.swing.JComboBox<>();
         btnInsVaga = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tbVagas = new javax.swing.JTable();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        tbOportunidade = new javax.swing.JTable();
+        cbTipo = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnFeed.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/LOGUINHO.png"))); // NOI18N
@@ -63,7 +68,7 @@ public class Tela6Pesquisa extends javax.swing.JFrame {
         txtEntreContato.setText("Tipo de Resultado ");
         getContentPane().add(txtEntreContato, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 240, 30));
 
-        cbAreaAtua.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administração, negócios e serviços", "Artes e Design", "Ciências Biológicas e da Terra", "Análise e Desenvolvimento de Sistemas", "Ciências Sociais e Humanas", "Comunicação e Informação", "Engenharia e Produção", "Saúde e Bem-estar" }));
+        cbAreaAtua.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todas", "Administração, negócios e serviços", "Artes e Design", "Ciências Biológicas e da Terra", "Análise e Desenvolvimento de Sistemas", "Ciências Sociais e Humanas", "Comunicação e Informação", "Engenharia e Produção", "Saúde e Bem-estar" }));
         getContentPane().add(cbAreaAtua, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 280, -1));
 
         btnInsVaga.setBackground(new java.awt.Color(22, 53, 88));
@@ -77,40 +82,42 @@ public class Tela6Pesquisa extends javax.swing.JFrame {
         });
         getContentPane().add(btnInsVaga, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 130, 40));
 
-        tbVagas.setModel(new javax.swing.table.DefaultTableModel(
+        tbOportunidade.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Cod.", "Titulo"
+                "Cod.", "Titulo", "Tipo"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
         });
-        tbVagas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        tbVagas.addMouseListener(new java.awt.event.MouseAdapter() {
+        tbOportunidade.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tbOportunidade.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbVagasMouseClicked(evt);
+                tbOportunidadeMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(tbVagas);
-        if (tbVagas.getColumnModel().getColumnCount() > 0) {
-            tbVagas.getColumnModel().getColumn(0).setResizable(false);
-            tbVagas.getColumnModel().getColumn(0).setPreferredWidth(10);
-            tbVagas.getColumnModel().getColumn(1).setResizable(false);
-            tbVagas.getColumnModel().getColumn(1).setPreferredWidth(200);
+        jScrollPane2.setViewportView(tbOportunidade);
+        if (tbOportunidade.getColumnModel().getColumnCount() > 0) {
+            tbOportunidade.getColumnModel().getColumn(0).setResizable(false);
+            tbOportunidade.getColumnModel().getColumn(0).setPreferredWidth(15);
+            tbOportunidade.getColumnModel().getColumn(1).setResizable(false);
+            tbOportunidade.getColumnModel().getColumn(1).setPreferredWidth(150);
+            tbOportunidade.getColumnModel().getColumn(2).setResizable(false);
+            tbOportunidade.getColumnModel().getColumn(2).setPreferredWidth(35);
         }
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 280, 180));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Vagas de Emprego", "Curso", "Serviços" }));
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 280, 20));
+        cbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Vagas de Emprego", "Curso", "Serviços" }));
+        getContentPane().add(cbTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 280, 20));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/fundoPesquisa.jpeg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -134,11 +141,16 @@ public class Tela6Pesquisa extends javax.swing.JFrame {
         buscarTabela();
     }//GEN-LAST:event_btnBuscarActionPerformed
 
-    private void tbVagasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbVagasMouseClicked
+    private void tbOportunidadeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbOportunidadeMouseClicked
         Tela8VisualizarOportunidade telaVizu = new Tela8VisualizarOportunidade();
         telaVizu.setVisible(true);
-        telaVizu.recebeVaga(getVagaSelecionada());
-    }//GEN-LAST:event_tbVagasMouseClicked
+        telaVizu.recebeTelaPesquisa(this);
+        telaVizu.recebeOportunidade(getOportunidadeSelecionada());
+    }//GEN-LAST:event_tbOportunidadeMouseClicked
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        buscarTabela();
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments
@@ -183,10 +195,10 @@ public class Tela6Pesquisa extends javax.swing.JFrame {
     private javax.swing.JButton btnFeed;
     private javax.swing.JButton btnInsVaga;
     private javax.swing.JComboBox<String> cbAreaAtua;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> cbTipo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable tbVagas;
+    private javax.swing.JTable tbOportunidade;
     private javax.swing.JLabel txtEntreContato;
     private javax.swing.JLabel txtSelectAreaAtua;
     // End of variables declaration//GEN-END:variables
@@ -196,32 +208,26 @@ public class Tela6Pesquisa extends javax.swing.JFrame {
     }
 
     private List<ObjOportunidade> getDados() {
-
-        List<ObjOportunidade> lstVagas = new ArrayList<ObjOportunidade>();
+        
+        List<ObjOportunidade> lstOportun = new ArrayList<ObjOportunidade>();
 
         try {
             this.conectar.conectaBanco();
 
-            this.conectar.executarSQL(
-                    "SELECT *"
-                    + " FROM"
-                    + " vagas"
-                    + " WHERE "
-                    + "vagas_areaatuacao = '" + cbAreaAtua.getSelectedItem().toString() + "'"
-                    + ";"
-            );
+            this.conectar.executarSQL(sqlScript((String)cbTipo.getSelectedItem(), (String)cbAreaAtua.getSelectedItem()));
 
             while (this.conectar.getResultSet().next()) {
 
-                ObjOportunidade vagaAtual = new ObjOportunidade();
+                ObjOportunidade oportunAtual = new ObjOportunidade();
 
-                vagaAtual.setVagaId(this.conectar.getResultSet().getInt(1));
-                vagaAtual.setVagaTitulo(this.conectar.getResultSet().getString(2));
-                vagaAtual.setVagaAreaAtuacao(this.conectar.getResultSet().getString(3));
-                vagaAtual.setVagaInfo(this.conectar.getResultSet().getString(4));
-                vagaAtual.setVagaUsuarioId(this.conectar.getResultSet().getInt(5));
+                oportunAtual.setOportunidadeId(this.conectar.getResultSet().getInt(1));
+                oportunAtual.setOportunidadeTipo(this.conectar.getResultSet().getString(2));
+                oportunAtual.setOportunidadeTitulo(this.conectar.getResultSet().getString(3));
+                oportunAtual.setOportunidadeAreaAtuacao(this.conectar.getResultSet().getString(4));
+                oportunAtual.setOportunidadeInfo(this.conectar.getResultSet().getString(5));
+                oportunAtual.setOportunidadeUsuarioId(this.conectar.getResultSet().getInt(6));
 
-                lstVagas.add(vagaAtual);
+                lstOportun.add(oportunAtual);
             }
 
         } catch (Exception e) {
@@ -230,31 +236,64 @@ public class Tela6Pesquisa extends javax.swing.JFrame {
         } finally {
             this.conectar.fechaBanco();
         }
-        return lstVagas;
+        return lstOportun;
     }
     
     private void buscarTabela(){
-        DefaultTableModel modelo = (DefaultTableModel) tbVagas.getModel();
+        DefaultTableModel modelo = (DefaultTableModel) tbOportunidade.getModel();
         modelo.setNumRows(0);
         
-        for (ObjOportunidade vagaAtual : getDados()) {
+        for (ObjOportunidade oportunAtual : getDados()) {
             
             modelo.addRow(new Object[]{
-                vagaAtual.getVagaId(),
-                vagaAtual.getVagaTitulo()
+                oportunAtual.getOportunidadeId(),
+                oportunAtual.getOportunidadeTitulo(),
+                oportunAtual.getOportunidadeTipo()
             });
             
         }
     }
     
-    private ObjOportunidade getVagaSelecionada(){
+    private ObjOportunidade getOportunidadeSelecionada(){
     
-        ObjOportunidade vagaSelecionada = new ObjOportunidade();
+        ObjOportunidade oportunSelecionada = new ObjOportunidade();
         
-        int idx = tbVagas.getSelectedRow();
+        int idx = tbOportunidade.getSelectedRow();
         
-        vagaSelecionada = getDados().get(idx);
+        oportunSelecionada = getDados().get(idx);
         
-        return vagaSelecionada;
+        return oportunSelecionada;
+    }
+    
+    private String sqlScript(String tipo, String area){
+        
+        String script = "";
+        int tipoScript = 0;
+        
+        if (!area.equals("Todas") && !tipo.equals("Todos")){
+            tipoScript = 1;
+        } else if (!area.equals("Todas")) {
+            tipoScript = 2;
+        } else if (!tipo.equals("Todos")) {
+            tipoScript = 3;
+        } else {
+            tipoScript = 4;
+        }
+        
+        switch(tipoScript){
+            case 1:
+                script = "select * from oportunidades where oportunidade_tipo = '" +tipo+ "' && oportunidade_areaatuacao = '" +area+ "';";
+                break;
+            case 2:
+                script = "select * from oportunidades where oportunidade_areaatuacao = '" +area+ "';";
+                break;
+            case 3:
+                script = "select * from oportunidades where oportunidade_tipo = '" +tipo+ "';";
+                break;
+            case 4:
+                script = "select * from oportunidades;";
+                break;
+        }
+        return script;
     }
 }

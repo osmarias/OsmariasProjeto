@@ -8,7 +8,8 @@ import javax.swing.JOptionPane;
 
 public class Tela8VisualizarOportunidade extends javax.swing.JFrame {
 
-    ObjOportunidade vaga = new ObjOportunidade();
+    ObjOportunidade oportunidade = new ObjOportunidade();
+    Tela6Pesquisa tela = new Tela6Pesquisa();
     
     public Tela8VisualizarOportunidade() {
         initComponents();
@@ -26,7 +27,7 @@ public class Tela8VisualizarOportunidade extends javax.swing.JFrame {
         campoInfo = new javax.swing.JScrollPane();
         campoTxtInfo = new javax.swing.JTextArea();
         btnVoltar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnMenu = new javax.swing.JButton();
         cbTipo = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -45,11 +46,6 @@ public class Tela8VisualizarOportunidade extends javax.swing.JFrame {
 
         cbAreaAtua.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Administração, negócios e serviços", "Artes e Design", "Ciências Biológicas e da Terra", "Análise e Desenvolvimento de Sistemas", "Ciências Sociais e Humanas", "Comunicação e Informação", "Engenharia e Produção", "Saúde e Bem-estar" }));
         cbAreaAtua.setEnabled(false);
-        cbAreaAtua.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbAreaAtuaActionPerformed(evt);
-            }
-        });
         getContentPane().add(cbAreaAtua, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 280, 40));
 
         campoTitulo.setEnabled(false);
@@ -78,22 +74,17 @@ public class Tela8VisualizarOportunidade extends javax.swing.JFrame {
         });
         getContentPane().add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 440, 120, -1));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/LOGUINHO.png"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/LOGUINHO.png"))); // NOI18N
+        btnMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnMenuActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, 50, 40));
+        getContentPane().add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, 50, 40));
 
         cbTipo.setBackground(new java.awt.Color(242, 242, 242));
         cbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Vagas de Emprego", "Curso", "Serviços" }));
         cbTipo.setEnabled(false);
-        cbTipo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbTipoActionPerformed(evt);
-            }
-        });
         getContentPane().add(cbTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 280, 40));
 
         jLabel2.setText("Tipo");
@@ -108,32 +99,17 @@ public class Tela8VisualizarOportunidade extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-        Tela7InserirOportunidade tela = new Tela7InserirOportunidade();
-        tela.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        vizualizaVaga(vaga);
-        System.out.println(vaga.getVagaId());
-        System.out.println(vaga.getVagaTitulo());
-        System.out.println(vaga.getVagaAreaAtuacao());
-        System.out.println(vaga.getVagaInfo());
-        System.out.println(vaga.getVagaUsuarioId());
-        
+        vizualizaOportunidade(oportunidade);      
     }//GEN-LAST:event_formWindowActivated
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
         dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void cbAreaAtuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbAreaAtuaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbAreaAtuaActionPerformed
-
-    private void cbTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTipoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbTipoActionPerformed
+        tela.dispose();
+    }//GEN-LAST:event_btnMenuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -174,13 +150,13 @@ public class Tela8VisualizarOportunidade extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnMenu;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JScrollPane campoInfo;
     private javax.swing.JTextField campoTitulo;
     private javax.swing.JTextArea campoTxtInfo;
     private javax.swing.JComboBox<String> cbAreaAtua;
     private javax.swing.JComboBox<String> cbTipo;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel txtAreaAtua;
@@ -188,14 +164,18 @@ public class Tela8VisualizarOportunidade extends javax.swing.JFrame {
     private javax.swing.JLabel txtTitulo;
     // End of variables declaration//GEN-END:variables
 
-    public void recebeVaga(ObjOportunidade vagaAtual) {
-        this.vaga = vagaAtual;
+    public void recebeOportunidade(ObjOportunidade oportunidadeAtual) {
+        this.oportunidade = oportunidadeAtual;
     }
     
-    private void vizualizaVaga(ObjOportunidade vagaVizu){
-        campoTitulo.setText(vagaVizu.getVagaTitulo());
-        cbAreaAtua.getModel().setSelectedItem(vagaVizu.getVagaAreaAtuacao());
-        campoTxtInfo.setText(vagaVizu.getVagaInfo());
+    public void recebeTelaPesquisa(Tela6Pesquisa telaPesquisa){
+        this.tela = telaPesquisa;
     }
     
+    private void vizualizaOportunidade(ObjOportunidade oportunidadeVizu){
+        cbTipo.getModel().setSelectedItem(oportunidadeVizu.getOportunidadeTipo());
+        campoTitulo.setText(oportunidadeVizu.getOportunidadeTitulo());
+        cbAreaAtua.getModel().setSelectedItem(oportunidadeVizu.getOportunidadeAreaAtuacao());
+        campoTxtInfo.setText(oportunidadeVizu.getOportunidadeInfo());
+    }
 }
