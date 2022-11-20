@@ -23,13 +23,14 @@ create table perfilUsuario (
     perfil_usuario_id 		int not null references usuario(usuario_id)
 );
 
-drop table if exists vagas;
-create table vagas (
-	vagas_id				int			auto_increment	primary key,
-	vagas_titulo			varchar(30) not null,
-    vagas_areaatuacao		varchar(30)	not null,
-    vagas_informacoes		varchar(300),
-    vagas_usuario_id 		int not null references usuario(usuario_id)
+drop table if exists oportunidades;
+create table oportunidades (
+	oportunidade_id				int				auto_increment	primary key,
+    oportunidade_tipo			varchar(30) 	not null,
+	oportunidade_titulo			varchar(100) 	not null,
+    oportunidade_areaatuacao	varchar(100)	not null,
+    oportunidade_informacoes	varchar(300),
+    oportunidade_usuario_id 	int 			not null 	references usuario(usuario_id)
 );
 
 drop table if exists contatos;
@@ -38,7 +39,7 @@ create table contatos (
 	contatos_nome_user		varchar(30) not null,
     contatos_email_user		varchar(30)	not null,
     contatos_pergunta		varchar(300),
-    contatos_usuario_id 		int not null references usuario(usuario_id)
+    contatos_usuario_id 	int not null references usuario(usuario_id)
 );
 
 insert into usuarios values (null, 'Tester','tester', 'tester@hotmail.com','tester123',true);
