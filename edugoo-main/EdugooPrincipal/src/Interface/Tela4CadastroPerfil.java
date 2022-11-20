@@ -40,7 +40,6 @@ public class Tela4CadastroPerfil extends javax.swing.JFrame {
         cbStatusMerc = new javax.swing.JComboBox<>();
         cbInteresse2 = new javax.swing.JComboBox<>();
         btnVoltar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -55,11 +54,6 @@ public class Tela4CadastroPerfil extends javax.swing.JFrame {
         btnFoto.setBackground(new java.awt.Color(161, 211, 199));
         btnFoto.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         btnFoto.setText("Carregar Foto");
-        btnFoto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFotoActionPerformed(evt);
-            }
-        });
         getContentPane().add(btnFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 110, -1));
 
         campoNomePerfil.setEnabled(false);
@@ -104,24 +98,13 @@ public class Tela4CadastroPerfil extends javax.swing.JFrame {
         cbInteresse2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Administração", "Arquitetura", "Biomedicina", "Design", "Design de Interiores", "Design de Produto", "Dentista", "Direito", "Economia", "Enfermagem", "Engenharia Civil", "Engenharia Elétrica", "Engenharia Mecânica", "Engenharia de Minas", "Engenharia de Produção", "Estética", "Farmácia", "Fisioterapia", "Fonoaudiologia", "Gastronomia", "Logística", "Medicina", "Nutrição", "Odontologia", "Paisagismo", "Pedagogia", "Psicologia", "Radiologia", "Recursos Humanos", "Rede de Computadores", "Relações Internacionais", "Serviços Gerais", "Sistemas da Informação", "Sistemas para Internet", "Tecnologia da Informação", "Terapias Integrativas e Complementares" }));
         getContentPane().add(cbInteresse2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 350, 140, -1));
 
-        btnVoltar.setBackground(new java.awt.Color(161, 66, 105));
-        btnVoltar.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        btnVoltar.setForeground(new java.awt.Color(255, 255, 255));
-        btnVoltar.setText("Voltar");
+        btnVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/voltar.png"))); // NOI18N
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVoltarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, -1, -1));
-
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/voltar.png"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, 40, 40));
+        getContentPane().add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, 40, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/TELACADASTROPERFIL.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 480));
@@ -129,10 +112,6 @@ public class Tela4CadastroPerfil extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFotoActionPerformed
-
-    }//GEN-LAST:event_btnFotoActionPerformed
 
     private void btnSalvarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarPerfilActionPerformed
         if (usuario.getUsuarioPerfilExist() == 0) {
@@ -152,14 +131,8 @@ public class Tela4CadastroPerfil extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowActivated
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-        dispose();
-    }//GEN-LAST:event_btnVoltarActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-     Tela3CadastroUsuario tela = new Tela3CadastroUsuario();
-        tela.setVisible(true);
         dispose(); 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnVoltarActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -210,7 +183,6 @@ public class Tela4CadastroPerfil extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbInteresse2;
     private javax.swing.JComboBox<String> cbStatusMerc;
     private com.toedter.calendar.JDateChooser dataNasc;
-    private javax.swing.JButton jButton1;
     private com.toedter.calendar.JDayChooser jDayChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
@@ -359,7 +331,7 @@ public class Tela4CadastroPerfil extends javax.swing.JFrame {
                     perfilUser.setPerfilInteresse1(this.conectar.getResultSet().getString(5));
                     perfilUser.setPerfilInteresse2(this.conectar.getResultSet().getString(6));
                     perfilUser.setPerfilStatusMercado(this.conectar.getResultSet().getString(7));
-                    perfilUser.setPerfilId(this.conectar.getResultSet().getInt(8));
+                    perfilUser.setPerfilUsuarioId(this.conectar.getResultSet().getInt(8));
 
                 }
 

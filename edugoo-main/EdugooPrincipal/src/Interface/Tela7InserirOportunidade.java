@@ -3,16 +3,16 @@ package Interface;
 
 import Conexoes.MySQL;
 import Objetos.ObjUsuario;
-import Objetos.ObjVaga;
+import Objetos.ObjOportunidade;
 import javax.swing.JOptionPane;
 
-public class Tela7InserirVaga extends javax.swing.JFrame {
+public class Tela7InserirOportunidade extends javax.swing.JFrame {
 
     MySQL conectar = new MySQL();
     ObjUsuario usuario = new ObjUsuario();
-    ObjVaga vaga = new ObjVaga();
+    ObjOportunidade oportunidade = new ObjOportunidade();
     
-    public Tela7InserirVaga() {
+    public Tela7InserirOportunidade() {
         initComponents();
     }
 
@@ -28,17 +28,16 @@ public class Tela7InserirVaga extends javax.swing.JFrame {
         btnFeed = new javax.swing.JButton();
         campoInfo = new javax.swing.JScrollPane();
         campoTxtInfo = new javax.swing.JTextArea();
-        btnVoltar = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cbTipo = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtTitulo.setText("Título da Vaga");
+        txtTitulo.setText("Título");
         getContentPane().add(txtTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
 
         cbAreaAtua.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Administração, negócios e serviços", "Artes e Design", "Ciências Biológicas e da Terra", "Análise e Desenvolvimento de Sistemas", "Ciências Sociais e Humanas", "Comunicação e Informação", "Engenharia e Produção", "Saúde e Bem-estar" }));
@@ -65,16 +64,6 @@ public class Tela7InserirVaga extends javax.swing.JFrame {
 
         getContentPane().add(campoInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 333, 280, 100));
 
-        btnVoltar.setBackground(new java.awt.Color(161, 211, 199));
-        btnVoltar.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        btnVoltar.setText("VOLTAR");
-        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVoltarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 440, 100, -1));
-
         btnSalvar.setBackground(new java.awt.Color(161, 211, 199));
         btnSalvar.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         btnSalvar.setText("SALVAR");
@@ -83,13 +72,13 @@ public class Tela7InserirVaga extends javax.swing.JFrame {
                 btnSalvarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 440, 100, -1));
+        getContentPane().add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 440, 100, -1));
 
         jLabel2.setText("Tipo");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Vagas de Emprego", "Curso", "Serviços" }));
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 280, 40));
+        cbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Vagas de Emprego", "Curso", "Serviços" }));
+        getContentPane().add(cbTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 280, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/TELANOVAOPO.png"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -100,20 +89,11 @@ public class Tela7InserirVaga extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnFeedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFeedActionPerformed
-    Tela5Menu tela = new Tela5Menu();
-        tela.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnFeedActionPerformed
 
-    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-        Tela6Vagas telaVagas = new Tela6Vagas();
-        telaVagas.setVisible(true);
-        telaVagas.recebeUsuarioOn(usuario);
-        dispose();
-    }//GEN-LAST:event_btnVoltarActionPerformed
-
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        SalvarVagas(vaga);
+        SalvarOportunidade(oportunidade);
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     /**
@@ -133,20 +113,21 @@ public class Tela7InserirVaga extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Tela7InserirVaga.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tela7InserirOportunidade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Tela7InserirVaga.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tela7InserirOportunidade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Tela7InserirVaga.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tela7InserirOportunidade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Tela7InserirVaga.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tela7InserirOportunidade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Tela7InserirVaga().setVisible(true);
+                new Tela7InserirOportunidade().setVisible(true);
             }
         });
     }
@@ -154,12 +135,11 @@ public class Tela7InserirVaga extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFeed;
     private javax.swing.JButton btnSalvar;
-    private javax.swing.JButton btnVoltar;
     private javax.swing.JScrollPane campoInfo;
     private javax.swing.JTextField campoTitulo;
     private javax.swing.JTextArea campoTxtInfo;
     private javax.swing.JComboBox<String> cbAreaAtua;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> cbTipo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel txtAreaAtua;
@@ -171,44 +151,46 @@ public class Tela7InserirVaga extends javax.swing.JFrame {
         this.usuario = usuAtual;
     }
     
-    private void SalvarVagas(ObjVaga novaVaga) {
+    private void SalvarOportunidade(ObjOportunidade novaOportunidade) {
         
-        if (campoTitulo.getText().equals("") || cbAreaAtua.getSelectedItem().toString().equals("Selecione")
-                || campoTxtInfo.getText().equals("")) {
+        if (cbTipo.getSelectedItem().toString().equals("Selecione") || campoTitulo.getText().equals("") 
+                || cbAreaAtua.getSelectedItem().toString().equals("Selecione") || campoTxtInfo.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Todos os Campos sao Obrigatorios!!");
         } else {
             
             this.conectar.conectaBanco();
 
-            novaVaga.setVagaTitulo(campoTitulo.getText());
-            novaVaga.setVagaAreaAtuacao((String)cbAreaAtua.getSelectedItem());
-            novaVaga.setVagaInfo(campoTxtInfo.getText());
-            novaVaga.setVagaUsuarioId(usuario.getUsuarioId());
+            novaOportunidade.setOportunidadeTipo((String)cbTipo.getSelectedItem());
+            novaOportunidade.setOportunidadeTitulo(campoTitulo.getText());
+            novaOportunidade.setOportunidadeAreaAtuacao((String)cbAreaAtua.getSelectedItem());
+            novaOportunidade.setOportunidadeInfo(campoTxtInfo.getText());
+            novaOportunidade.setOportunidadeUsuarioId(usuario.getUsuarioId());
             
             try {
 
-                this.conectar.insertSQL("INSERT INTO vagas ("
-                    + "vagas_titulo,"
-                    + "vagas_areaatuacao,"
-                    + "vagas_informacoes,"
-                    + "vagas_usuario_id"
+                this.conectar.insertSQL("INSERT INTO oportunidades ("
+                    + "oportunidade_tipo,"
+                    + "oportunidade_titulo,"
+                    + "oportunidade_areaatuacao,"
+                    + "oportunidade_informacoes,"
+                    + "oportunidade_usuario_id"
                     + ") VALUES ("
-                    + "'" + novaVaga.getVagaTitulo() + "',"
-                    + "'" + novaVaga.getVagaAreaAtuacao() + "',"
-                    + "'" + novaVaga.getVagaInfo() + "',"
-                    + "'" + novaVaga.getVagaUsuarioId() + "'"
+                    + "'" + novaOportunidade.getOportunidadeTipo() + "',"
+                    + "'" + novaOportunidade.getOportunidadeTitulo() + "',"
+                    + "'" + novaOportunidade.getOportunidadeAreaAtuacao() + "',"
+                    + "'" + novaOportunidade.getOportunidadeInfo() + "',"
+                    + "'" + novaOportunidade.getOportunidadeUsuarioId() + "'"
                     + ");");
 
             } catch (Exception e) {
 
-                System.out.println("Erro ao salvar vaga " + e.getMessage());
-                JOptionPane.showMessageDialog(null, "Erro ao salvar vaga");
+                System.out.println("Erro ao salvar oportunidade " + e.getMessage());
+                JOptionPane.showMessageDialog(null, "Erro ao salvar oportunidade");
 
             } finally {
                 this.conectar.fechaBanco();
                 JOptionPane.showMessageDialog(null, "Salvo com Sucesso!");
             }
         }
-        
     }
 }
