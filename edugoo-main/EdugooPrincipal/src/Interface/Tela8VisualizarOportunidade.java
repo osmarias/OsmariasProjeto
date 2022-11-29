@@ -4,6 +4,7 @@ package Interface;
 import Conexoes.MySQL;
 import Objetos.ObjUsuario;
 import Objetos.ObjOportunidade;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 public class Tela8VisualizarOportunidade extends javax.swing.JFrame {
@@ -45,10 +46,12 @@ public class Tela8VisualizarOportunidade extends javax.swing.JFrame {
         getContentPane().add(txtTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
 
         cbAreaAtua.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Administração, negócios e serviços", "Artes e Design", "Ciências Biológicas e da Terra", "Análise e Desenvolvimento de Sistemas", "Ciências Sociais e Humanas", "Comunicação e Informação", "Engenharia e Produção", "Saúde e Bem-estar" }));
-        cbAreaAtua.setEnabled(false);
+        cbAreaAtua.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbAreaAtuaItemStateChanged(evt);
+            }
+        });
         getContentPane().add(cbAreaAtua, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 280, 40));
-
-        campoTitulo.setEnabled(false);
         getContentPane().add(campoTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 280, 40));
 
         txtAreaAtua.setText("Área de atuação");
@@ -59,7 +62,6 @@ public class Tela8VisualizarOportunidade extends javax.swing.JFrame {
 
         campoTxtInfo.setColumns(20);
         campoTxtInfo.setRows(5);
-        campoTxtInfo.setEnabled(false);
         campoInfo.setViewportView(campoTxtInfo);
 
         getContentPane().add(campoInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 280, 100));
@@ -82,9 +84,12 @@ public class Tela8VisualizarOportunidade extends javax.swing.JFrame {
         });
         getContentPane().add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, 50, 40));
 
-        cbTipo.setBackground(new java.awt.Color(242, 242, 242));
         cbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Vagas de Emprego", "Curso", "Serviços" }));
-        cbTipo.setEnabled(false);
+        cbTipo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbTipoItemStateChanged(evt);
+            }
+        });
         getContentPane().add(cbTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 280, 40));
 
         jLabel2.setText("Tipo");
@@ -104,12 +109,24 @@ public class Tela8VisualizarOportunidade extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         vizualizaOportunidade(oportunidade);      
+        campoTitulo.setDisabledTextColor(Color.BLACK);
+        campoTitulo.setEnabled(false);
+        campoTxtInfo.setDisabledTextColor(Color.BLACK);
+        campoTxtInfo.setEnabled(false);
     }//GEN-LAST:event_formWindowActivated
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
         dispose();
         tela.dispose();
     }//GEN-LAST:event_btnMenuActionPerformed
+
+    private void cbTipoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbTipoItemStateChanged
+        cbTipo.getModel().setSelectedItem(oportunidade.getOportunidadeTipo());
+    }//GEN-LAST:event_cbTipoItemStateChanged
+
+    private void cbAreaAtuaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbAreaAtuaItemStateChanged
+        cbAreaAtua.getModel().setSelectedItem(oportunidade.getOportunidadeAreaAtuacao());
+    }//GEN-LAST:event_cbAreaAtuaItemStateChanged
 
     /**
      * @param args the command line arguments
