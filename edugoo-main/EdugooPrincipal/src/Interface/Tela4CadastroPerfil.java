@@ -3,6 +3,7 @@ package Interface;
 import Conexoes.MySQL;
 import Objetos.ObjPerfilUsuario;
 import Objetos.ObjUsuario;
+import java.awt.Color;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -55,8 +56,6 @@ public class Tela4CadastroPerfil extends javax.swing.JFrame {
         btnFoto.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         btnFoto.setText("Carregar Foto");
         getContentPane().add(btnFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 110, -1));
-
-        campoNomePerfil.setEnabled(false);
         getContentPane().add(campoNomePerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 160, -1));
         getContentPane().add(dataNasc, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 140, -1));
 
@@ -122,10 +121,11 @@ public class Tela4CadastroPerfil extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalvarPerfilActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        campoNomePerfil.setDisabledTextColor(Color.BLACK);
+        campoNomePerfil.setEnabled(false);
+        
         if(usuario.getUsuarioPerfilExist() == 0){
             btnVoltar.setVisible(false);
-        } else {
-            dataNasc.setEnabled(false);
         }
         carregarPerfilUser(usuario);
     }//GEN-LAST:event_formWindowActivated

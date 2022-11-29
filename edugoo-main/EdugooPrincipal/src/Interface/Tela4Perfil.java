@@ -3,6 +3,7 @@ package Interface;
 import Conexoes.MySQL;
 import Objetos.ObjPerfilUsuario;
 import Objetos.ObjUsuario;
+import java.awt.Color;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -51,8 +52,6 @@ public class Tela4Perfil extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, 50, 40));
-
-        campoNomePerfil.setEnabled(false);
         getContentPane().add(campoNomePerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 150, 40));
 
         campoInfo.setColumns(20);
@@ -62,7 +61,11 @@ public class Tela4Perfil extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 280, 90));
 
         cbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A disposição", "Trabalhando", "Estagiando", "Se profissionalizando", "Desempregada", "Buscando conhecimento" }));
-        cbStatus.setEnabled(false);
+        cbStatus.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbStatusItemStateChanged(evt);
+            }
+        });
         getContentPane().add(cbStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 280, -1));
         getContentPane().add(campoInteresse1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, 280, -1));
 
@@ -74,8 +77,6 @@ public class Tela4Perfil extends javax.swing.JFrame {
         txtInfo.setText("Mais informações");
         getContentPane().add(txtInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, -1));
         getContentPane().add(campoInteresse2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 280, -1));
-
-        dataNasc.setEnabled(false);
         getContentPane().add(dataNasc, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 150, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/TELAPERFILCADASTRADO.png"))); // NOI18N
@@ -91,7 +92,19 @@ public class Tela4Perfil extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         carregarPerfilUser(usuario);
+        campoNomePerfil.setDisabledTextColor(Color.BLACK);
+        campoNomePerfil.setEnabled(false);
+        campoInfo.setDisabledTextColor(Color.BLACK);
+        campoInfo.setEnabled(false);
+        campoInteresse1.setDisabledTextColor(Color.BLACK);
+        campoInteresse1.setEnabled(false);
+        campoInteresse2.setDisabledTextColor(Color.BLACK);
+        campoInteresse2.setEnabled(false);
     }//GEN-LAST:event_formWindowActivated
+
+    private void cbStatusItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbStatusItemStateChanged
+        cbStatus.getModel().setSelectedItem(perfilUser.getPerfilStatusMercado());
+    }//GEN-LAST:event_cbStatusItemStateChanged
 
     /**
      * @param args the command line arguments
